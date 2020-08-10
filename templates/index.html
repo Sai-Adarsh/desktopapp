@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/metro-all.min.css">
+    <link rel="stylesheet" href="../static/styles.css">
+    <title>FlaskApp</title>
+</head>
+<body>
+
+<center>
+  <h1>Desktop App</h1><br />
+  <img height="200px" width="200px" src="{{ file }}"/><br />
+  <form class= "new" action = "/home" method = "POST">
+        <div class="range-slider">
+          <p><h2>kernSize:</h2>
+          <input name = "kernSize" class="range-slider__range" type="range" value="{{ kernSize }}" min="0" max="20">
+          <span class="range-slider__value">{{ kernSize }}</span>
+        </div>
+        <div class="range-slider">
+          <p><h2>thresSize:</h2>
+          <input name = "thresSize" class="range-slider__range" type="range" value="{{ thresSize }}" min="0" max="500">
+          <span class="range-slider__value">{{ thresSize }}</span>
+        </div>
+         <p><input align="right" type= "submit" value = "submit" class="myButton"/></p>
+  </form>
+</center>
+
+
+<script src="../static/jquery-3.4.1.min.js"></script>
+<script src="../static/metro.min.js"></script>
+<script src="../static/scripts.js"></script>
+
+
+</body>
+</html>
