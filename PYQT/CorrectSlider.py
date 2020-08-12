@@ -1,16 +1,18 @@
 import sys
+import json
 from PyQt5 import QtWidgets, QtGui,QtCore
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QSlider,QPushButton,QLabel
+from PyQt5.QtWidgets import QSlider,QPushButton,QLabel,QMessageBox
 from mba_data_access import returnImg
 
+image1="tile_500um.png"
 
 class MainWindow():
     def __init__(self):
         self.app=QtWidgets.QApplication(sys.argv)
         self.window=QtWidgets.QMainWindow()
-        self.imagepath="PYQT/samples/tile_500um.png"
-        self.imagepath2="PYQT/samples/test.png"
+        self.imagepath="tile_500um.png"
+        self.imagepath2="samples/test.png"
         self.initGui()
         self.window.setWindowTitle("Crowd Cell")
         self.window.setGeometry(500,200,500,550)
@@ -93,17 +95,23 @@ class MainWindow():
         self.label.setPixmap(self.pixmapImage)
         #size = self.slider.value()
         self.l3.setText(str(value))
-    
-       
-    
-    
-   
-       
+        with open('samples/person.txt') as json_file:
+                  data = json.load(json_file)
+        #print(data)
+        msg = QtWidgets.QMessageBox(self.window)
+        msg.setWindowTitle("Segmented Cells")
+        msg.setGeometry(700,400,800,500)
+        msg.setText(str(data))
+        msg.show()
+
+
     def on_click(self):
         
         self.image=QtGui.QImage(self.imagepath2)
         self.pixmapImage=QtGui.QPixmap.fromImage(self.image)
         self.label.setPixmap(self.pixmapImage)
        # return (image2)
+
+   
         
 main=MainWindow()

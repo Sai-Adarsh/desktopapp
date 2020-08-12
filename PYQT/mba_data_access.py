@@ -10,6 +10,7 @@ import matplotlib as plt
 from skimage.segmentation import quickshift, mark_boundaries
 from skimage.future import graph
 import matplotlib
+import json
 def returnImg(threSize):
     image_url = "http://brainarchitecture.org/fcgi-bin/iipsrv.fcgi?FIF=/PMD2057/PMD2057%262056-N9-2015.03.12-02.58.18_PMD2057_1_0025.jp2&GAM=1&WID=1087&RGN=0.5435,0.4529166666666667,0.04529166666666667,0.04529166666666667&MINMAX=1:10,255&MINMAX=3:10,255&MINMAX=2:10,255&CVT=jpeg"
     print(threSize)
@@ -43,8 +44,9 @@ def returnImg(threSize):
                                        weight_func=_weight_mean_color)
     res1 = mark_boundaries(im_2_2, labels1,mode='subpixel')
     res2 = mark_boundaries(im_2_2, labels2, mode='outer')
-    matplotlib.image.imsave("PYQT/samples/test.png", res2)
-   
+    matplotlib.image.imsave("samples/test.png", res2)
+    with open('samples/person.txt', 'w') as json_file:
+               json.dump(int(labels2.max()), json_file)
     #exec(open('CorrectSlider.py').read(),myVars)
     #if not False:
      #   plt.figure(figsize = (18,18))
@@ -60,10 +62,6 @@ def returnImg(threSize):
     #from CorrectSlider import __init__
    # exec(open('CorrectSlider.py.py').read(),myVars)
     print("end")
-    matplotlib.image.imsave('PYQT/samples/initial_tessellation.png',(255*res1).astype('uint8'))
-    matplotlib.image.imsave('PYQT/samples/rag_hier_merged.png',(255*res2).astype('uint8'))
-    matplotlib.image.imsave('PYQT/samples/first_pass_labels.png',labels2.astype('uint8'))
-
-
-
-
+    matplotlib.image.imsave('samples/initial_tessellation.png',(255*res1).astype('uint8'))
+    matplotlib.image.imsave('samples/rag_hier_merged.png',(255*res2).astype('uint8'))
+    matplotlib.image.imsave('samples/first_pass_labels.png',labels2.astype('uint8'))
