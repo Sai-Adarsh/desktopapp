@@ -44,7 +44,8 @@ def returnImg(threSize):
     res1 = mark_boundaries(im_2_2, labels1,mode='subpixel')
     res2 = mark_boundaries(im_2_2, labels2, mode='outer')
     matplotlib.image.imsave("PYQT/samples/test.png", res2)
-   
+    with open('PYQT/samples/person.txt', 'w') as json_file:
+               json.dump(int(labels2.max()), json_file)
     #exec(open('CorrectSlider.py').read(),myVars)
     #if not False:
      #   plt.figure(figsize = (18,18))
