@@ -44,9 +44,10 @@ def returnImg(threSize):
                                        weight_func=_weight_mean_color)
     res1 = mark_boundaries(im_2_2, labels1,mode='subpixel')
     res2 = mark_boundaries(im_2_2, labels2, mode='outer')
+    cells=np.unique(labels2)
     matplotlib.image.imsave("samples/test.png", res2)
     with open('samples/person.txt', 'w') as json_file:
-               json.dump(int(labels2.max()), json_file)
+               json.dump(int(len(cells)), json_file)
     #exec(open('CorrectSlider.py').read(),myVars)
     #if not False:
      #   plt.figure(figsize = (18,18))
