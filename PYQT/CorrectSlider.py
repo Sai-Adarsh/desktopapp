@@ -12,7 +12,7 @@ class MainWindow():
         self.app=QtWidgets.QApplication(sys.argv)
         self.window=QtWidgets.QMainWindow()
         self.imagepath="tile_500um.png"
-        self.imagepath2="PYQT/samples/test.png"
+        self.imagepath2="samples/test.png"
         self.initGui()
         self.window.setWindowTitle("Crowd Cell")
         self.window.setGeometry(500,200,500,550)
@@ -95,7 +95,7 @@ class MainWindow():
         self.label.setPixmap(self.pixmapImage)
         #size = self.slider.value()
         self.l3.setText(str(value))
-        with open('PYQT/samples/person.txt') as json_file:
+        with open('samples/person.txt') as json_file:
                   data = json.load(json_file)
         #print(data)
         msg = QtWidgets.QMessageBox(self.window)

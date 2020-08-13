@@ -1,6 +1,6 @@
 from flask import Flask, request
 from flask import render_template
-#from flaskwebgui import FlaskUI
+from flaskwebgui import FlaskUI
 from mba_data_access import returnImg
 import requests
 from matplotlib import pyplot as plt
@@ -14,7 +14,7 @@ from matplotlib.figure import Figure
 import os
 
 app = Flask(__name__)
-#ui = FlaskUI(app) #browser_path=r"E\chrome\chrome.exe"
+ui = FlaskUI(app) #browser_path=r"E\chrome\chrome.exe"
 
 @app.route("/", methods = ['POST', 'GET'])
 def hello():
@@ -36,4 +36,5 @@ def home():
 	return render_template('index.html', kernSize = kernSize, thresSize = thresSize, file = file)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+	ui.run()
+	#app.run(debug=True)
